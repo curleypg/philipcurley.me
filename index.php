@@ -1,6 +1,7 @@
 <?php
+$keygen = mt_rand(1,999999);
 $c = curl_init();
-curl_setopt($c, CURLOPT_URL,"http://api.forismatic.com/api/1.0/?method=getQuote&key=43&format=json&lang=en");
+curl_setopt($c, CURLOPT_URL,"http://api.forismatic.com/api/1.0/?method=getQuote&key=".$keygen."&format=json&lang=en");
 curl_setopt($c, CURLOPT_RETURNTRANSFER, 1);
 $quote = json_decode(utf8_encode(curl_exec($c)),true);
 ?>
