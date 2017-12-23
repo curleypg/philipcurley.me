@@ -8,7 +8,6 @@ $quote = json_decode(utf8_encode(curl_exec($c)),true);
 
 <html>
   <style>
-  @import url(https://fonts.googleapis.com/css?family=Merriweather);
 
   div {
     width: 25%;
@@ -26,6 +25,7 @@ $quote = json_decode(utf8_encode(curl_exec($c)),true);
     color: gray;
   }
 
+  @import url(https://fonts.googleapis.com/css?family=Merriweather);
   </style>
   <body>
     <div>
