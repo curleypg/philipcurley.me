@@ -1,9 +1,17 @@
 <?php
-$keygen = mt_rand(1,999999);
-$c = curl_init();
-curl_setopt($c, CURLOPT_URL,"http://api.forismatic.com/api/1.0/?method=getQuote&key=".$keygen."&format=json&lang=en");
-curl_setopt($c, CURLOPT_RETURNTRANSFER, 1);
-$quote = json_decode(utf8_encode(curl_exec($c)),true);
+function getQuote () {
+  $keygen = mt_rand(1,999999);
+  $c = curl_init();
+  curl_setopt($c, CURLOPT_URL,"http://api.forismatic.com/api/1.0/?method=getQuote&key=".$keygen."&format=json&lang=en");
+  curl_setopt($c, CURLOPT_RETURNTRANSFER, 1);
+  return json_decode(utf8_encode(curl_exec($c)),true);
+}
+
+$i = 0;
+while (is_null($quote) && $i < 100) {
+  $quote = getQuote();
+  $i++;
+}
 ?>
 
 <html>
@@ -14,7 +22,7 @@ $quote = json_decode(utf8_encode(curl_exec($c)),true);
     min-width: 280px;
     margin: 100px auto;
     padding: 10px 30px;
-    font-family: 'Merriweather', serif;
+    font-family: serif;
     box-shadow: 5px 5px 20px -5px rgba(96, 125, 139, 0.25);
     padding: 20px;
   }
@@ -25,7 +33,6 @@ $quote = json_decode(utf8_encode(curl_exec($c)),true);
     color: gray;
   }
 
-  @import url(https://fonts.googleapis.com/css?family=Merriweather);
   </style>
   <body>
     <div>
