@@ -8,6 +8,7 @@ function getQuote () {
 }
 
 $i = 0;
+$quote = NULL;
 while (is_null($quote) && $i < 100) {
   $quote = getQuote();
   $i++;
